@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+  <style> 
+   #enterDetails {float: left; width: 50%;}
+    #findDetails{float: left; width: 50%;}
+    input {width: 120px;}
+body {text-align: center;}
+h1 { color: rgb(132, 161, 161);}
+h2 { color: rgb(129, 198, 198);}
+p.solid {border-style: solid; border-color:rgb(132, 161, 161);}
+/* Style the body */
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the main container */
+#quiz {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+/* Style the questions and answer options */
+h2, p {
+  color: #333;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Style the 'Start Quiz' button */
+button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Style the result display */
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Add some spacing */
+#quiz-form div {
+  margin-bottom: 10px;
+}
+   
+</style>
+</head>
+<body>
+  
+<h1>Mental health Quiz</h1>
+<p class="solid"></p>
+
+<div id="quiz">
+
+  <form id="quiz-form">
+
+    <h2>Question 1:</h2>
+
+    <p>How do you manage a panic attack?</p>
+  <label>
+      <input type="radio" name="q1" value="a"> a) drink coffee
+    </label>
+      <input type="radio" name="q1" value="b"> b) belly breathing
+    </label>
+      <input type="radio" name="q1" value="c"> c) shallow breathing
+<label>
+      <input type="radio" name="q1" value="d"> d) drink alcohol
+    </label>
+  
+
+    <h2>Question 2:</h2>
+    <p>What diamention of well-being does this this statement relate too?</p>
+    <p><b>"my stomach hurts from being anxious"</b></p>
+    
+   <div>
+      <input type="radio" name="q2" value="a"> a) Mental and Emotional
+    </div>
+      <input type="radio" name="q2" value="b"> b) Spiritual
+    <div>
+      <input type="radio" name="q2" value="c"> c) Physical
+    </div>
+      <input type="radio" name="q2" value="d"> d) Social
+
+    <h2>Question 3:</h2>
+    <p>What answer is correct to enhance your physical wellbeing?</p>
+   <div>
+      <input type="radio" name="q3" value="a"> a) Eat anything you want
+    </div>
+  <div>
+      <input type="radio" name="q3" value="b"> b) Go on daily walks
+    </div>
+   <div>
+      <input type="radio" name="q3" value="c"> c) Stay inside all day
+    </div>
+   <div>
+      <input type="radio" name="q3" value="d"> d) Sleep it off
+    </div>
+ 
+</div>
+<h2>Question 4:</h2>
+<p>How old are people who have mental wellbeing distress?</p>
+<div>
+  <input type ="radio" name="q4" value="a"> a) 16 
+</div>
+  <input type ="radio" name="q4" value="b"> b) 42
+<div>
+  <input type ="radio" name="q4" value="c"> c) 21
+</div>
+<div>
+  <input type ="radio" name="q4" value="d"> d) all of the above
+</div>
+<div id="result">
+  <h2>Your Score:</h2>
+  <p id="score">0</p>
+</div>
+<button type="button" onclick="calculateScore()">Submit</button>
+<script>
+  function calculateScore() {
+    // calcolating the score
+    let score = 0;
+
+    // Get the user's answers by delcearing the varible 
+    const q1Answer = document.querySelector('input[name="q1"]:checked');
+    const q2Answer = document.querySelector('input[name="q2"]:checked');
+    const q3Answer = document.querySelector('input[name="q3"]:checked');
+    const q4Answer = document.querySelector('input[name="q4"]:checked');
+
+    // Check answers and update score
+    // "&&"" - combines 2 conditions to check if they have they are both right. eg: - did the user get the right question? (chat gpt helped me to be able to combine the 2 conditions)
+    // eg: - did the user get the right question?, has the uset answerd the question correctly?
+    // using "if" method that I have learned in class to make my quiz                                                           
+    if (q1Answer && q1Answer.value === "b") {
+      score++;
+    }
+    if (q2Answer && q2Answer.value === "c") {
+      score++;
+    }
+    if (q3Answer && q3Answer.value === "b") {
+      score++;
+    }
+    if (q4Answer && q4Answer.value === "d") {
+      score++;
+    }
+
+    // Display the score
+    const scoreDisplay = document.getElementById("score");
+    scoreDisplay.textContent = score + " out of 4";
+    // "out of 3" is the amount of questions I have, and its genterating how many questions you have gotten right.
+  }
+  // const is the way of declearing a varible
+  const startButton = document.getElementById("startButton");
+const quizContainer = document.getElementById("quizcontainer");
+
+  startButton.addEventListener("click", function() {
+    // Hide the "Start Quiz" button (on click that function starts)
+    startButton.style.display = "none";
+
+    // Show the quiz container
+    // quiz container is the code of what the user has gotten correct where the style.display part puts the display on, the Block keeps the elements on the webpage together
+    quizContainer.style.display = "block";
+    // this peice of code shows the display of the score 
+  });
+
+</script>
+
+</body>
+</html>
